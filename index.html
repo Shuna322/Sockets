@@ -13,40 +13,21 @@
   <link href="css/style.css" rel="stylesheet">
   <!-- Custom size css -->
   <link rel="stylesheet" href="/css/style.css">
+  <!-- Icon fonts -->
+  <link href="/css/fontawesome-all.css" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- Navigation bar 1 -->
-  <nav class="navbar navbar-expand-sm bg-light">
-    <!-- Links -->
-    <div class="container">
-      <ul class="navbar-nav nav-fill w-100">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Доставка та оплата</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Запитання та відповіді</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Гарантія</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Контакти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Про магазин</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Navigation bar 2 -->
-  <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top justify-content-center">
-    <div class="navbar-collapse collapse justify-content-around">
-      <a class="navbar-brand" href="#"><img src="img\logo.png" alt="Logo" style="width:50px;">Sockets</a>
-      <ul class="navbar-nav" style="margin-right : 16px;">
-        <li class="nav-item dropdown" style="margin-right : 16px;">
+  <nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand mr-3" href="#"><img src="img\logo.png" alt="Logo" style="width:50px;">Sockets</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav mr-3 justify-content-around align-items-center">
+        <div class="nav-item dropdown mr-3">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Каталог товарів
           </button>
@@ -58,31 +39,37 @@
             <a class="dropdown-item" href="#">Системи охолодження</a>
             <a class="dropdown-item" href="#">Жорсткі диски та дискові масиви</a>
           </div>
-        </li>
-        <li class="nav-item" style="margin-right : 16px;">
-          <div class="input-group">
+        </div>
+        <div class="nav-item input-group">
+          <!-- <div class="input-group">
             <input type="text" class="form-control border-right-0" placeholder="Пошук" size="60%">
             <div class="input-group-append">
               <button class="btn btn-outline-primary border-left-0" type="button">Знайти</button>
             </div>
+          </div> -->
+
+
+            <input type="text" class="form-control" placeholder="Пошук" aria-label="Пошук" aria-describedby="basic-addon2" size="100%">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary mr-3" type="button">Знайти</button>
+            </div>
           </div>
-          <!--<form class="form-inline" action="/action_page.php">
+
+          <!-- <form class="form-inline" action="/action_page.php">
             <input class="form-control mr-sm-2" id="Search" type="text" placeholder="Пошук" size="50%">
             <button class="btn btn-success" type="submit">Знайти</button>
           </form>-->
-        </li>
 
-        <li class="nav-item">
+        <div class="nav-item mr">
           <a href="" id="cart">
           <img src="img\shopping-cart.png" alt="Cart" style="width:50px;">
-          <label style="">Кошик</label>
         </a>
-        </li>
-      </ul>
+        </div>
+      </div>
 
       <!-- Dropdown reg form-->
-      <ul class="navbar-nav navbar-left">
-        <li class="nav-item dropdown">
+      <div class="navbar-nav navbar-left">
+        <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Зареєструватися</a>
           <div class="dropdown-menu dropdown-menu-right">
             <div class="col-lg-12 dropdown-form-size">
@@ -112,9 +99,9 @@
               </form>
             </div>
           </div>
-        </li>
+        </div>
         <!-- Dropdown auth form -->
-        <li class="nav-item dropdown">
+        <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Авторизуватися</a>
           <div class="dropdown-menu dropdown-menu-right">
             <div class="col-lg-12 dropdown-form-size">
@@ -155,8 +142,8 @@
               </form>
             </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </nav>
   <div class="container text-center">
@@ -191,6 +178,28 @@
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
     in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </div>
+  <!-- Navigation bar 2 -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <!-- Links -->
+    <ul class="navbar-nav nav-fill w-100">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Доставка та оплата</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Запитання та відповіді</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Гарантія</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Контакти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Про магазин</a>
+      </li>
+    </ul>
+  </nav>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
