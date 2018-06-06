@@ -14,7 +14,10 @@
   <!-- Custom size css -->
   <link rel="stylesheet" href="/css/style.css">
   <!-- Icon fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/regular.css" integrity="sha384-EWu6DiBz01XlR6XGsVuabDMbDN6RT8cwNoY+3tIH+6pUCfaNldJYJQfQlbEIWLyA" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/brands.css" integrity="sha384-VGCZwiSnlHXYDojsRqeMn3IVvdzTx5JEuHgqZ3bYLCLUBV8rvihHApoA1Aso2TZA" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
 </head>
 
 <body>
@@ -24,24 +27,23 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand mr-3" href="#"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:50px;">Sockets</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navbar-nav mr-3 justify-content-around align-items-center">
-        <div class="nav-item dropdown mr-3">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <a class="navbar-brand mr-3 mb-1 mt-1" href="#"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:50px;">Sockets</a>
+    <div class="collapse navbar-collapse navbar-nav justify-content-between align-items-center align-content-center" id="navbarSupportedContent">
+      <div class="nav-item dropdown mr-3 mb-1 mt-1">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Каталог товарів
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Материнські плати</a>
-            <a class="dropdown-item" href="#">Процесори</a>
-            <a class="dropdown-item" href="#">Відеокарти</a>
-            <a class="dropdown-item" href="#">Оперативна пам'ять</a>
-            <a class="dropdown-item" href="#">Системи охолодження</a>
-            <a class="dropdown-item" href="#">Жорсткі диски та дискові масиви</a>
-          </div>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Материнські плати</a>
+          <a class="dropdown-item" href="#">Процесори</a>
+          <a class="dropdown-item" href="#">Відеокарти</a>
+          <a class="dropdown-item" href="#">Оперативна пам'ять</a>
+          <a class="dropdown-item" href="#">Системи охолодження</a>
+          <a class="dropdown-item" href="#">Жорсткі диски та дискові масиви</a>
         </div>
-        <div class="nav-item input-group">
-          <!-- <div class="input-group">
+      </div>
+      <div class="nav-item input-group mr-3 mb-1 mt-1">
+        <!-- <div class="input-group">
             <input type="text" class="form-control border-right-0" placeholder="Пошук" size="60%">
             <div class="input-group-append">
               <button class="btn btn-outline-primary border-left-0" type="button">Знайти</button>
@@ -49,28 +51,25 @@
           </div> -->
 
 
-            <input type="text" class="form-control" placeholder="Пошук" aria-label="Пошук" aria-describedby="basic-addon2" size="100%">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary mr-3" type="button">Знайти</button>
-            </div>
-          </div>
+        <input type="text" class="form-control" placeholder="Пошук" aria-label="Пошук" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Знайти</button>
+        </div>
+      </div>
 
-          <!-- <form class="form-inline" action="/action_page.php">
+      <!-- <form class="form-inline" action="/action_page.php">
             <input class="form-control mr-sm-2" id="Search" type="text" placeholder="Пошук" size="50%">
             <button class="btn btn-success" type="submit">Знайти</button>
           </form>-->
 
-        <div class="nav-item mr">
-          <a href="" id="cart">
+      <div class="nav-item mr-3 mb-1 mt-1">
+        <a href="" id="cart" class="nav-link">
             <i class="fa fa-shopping-cart" style="font-size:50px"></i>
-          <!-- <img src="img\shopping-cart.png" alt="Cart" style="width:50px;"> -->
         </a>
-        </div>
       </div>
 
       <!-- Dropdown reg form-->
-      <div class="navbar-nav navbar-left">
-        <div class="nav-item dropdown">
+      <!-- <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Зареєструватися</a>
           <div class="dropdown-menu dropdown-menu-right">
             <div class="col-lg-12 dropdown-form-size">
@@ -100,52 +99,52 @@
               </form>
             </div>
           </div>
-        </div>
-        <!-- Dropdown auth form -->
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Авторизуватися</a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <div class="col-lg-12 dropdown-form-size">
-              <div class="text-center">
-                <h3><b>Авторизуватися</b></h3></div>
-              <form id="ajax-login-form" action="" method="post" role="form" autocomplete="off">
-                <div class="form-group">
-                  <label for="username">Ім'я користувача або електрона адреса</label>
-                  <input type="text" name="username" id="username" tabindex="1" class="form-control" autocomplete="off">
-                </div>
+        </div> -->
 
-                <div class="form-group">
-                  <label for="password">Пароль</label>
-                  <input type="password" name="password" id="password" tabindex="2" class="form-control" autocomplete="off">
-                </div>
+      <div class="nav-item dropdown mb-1 mt-1">
+        <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px"></i><div class="text-center">Вхід</div></a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="col-lg-12 dropdown-form-size text-center">
+            <form id="ajax-login-form" action="" method="post" role="form" autocomplete="off">
+              <div class="form-group">
+                <label for="email">Електрона адреса</label>
+                <input type="text" name="email" id="email" tabindex="1" class="form-control" autocomplete="off">
+              </div>
 
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <input type="checkbox" tabindex="3" name="remember" id="remember">
-                      <label for="remember"> Запам'ятати мене</label>
-                    </div>
-                    <div class="col-lg-12">
-                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Авторизуватися">
+              <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password" tabindex="2" class="form-control" autocomplete="off">
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input type="checkbox" tabindex="3" name="account" id="account">
+                    <label for="account">Не маєте аккаунта ?</label>
+                  </div>
+                  <div class="col-lg-6">
+                    <input type="checkbox" tabindex="4" name="remember" id="remember">
+                    <label for="remember">Запам'ятати мене</label>
+                  </div>
+                  <div class="col-lg-12">
+                    <input type="submit" name="login-submit" id="login-submit" tabindex="5" class="form-control btn btn-success" value="Авторизуватися">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="text-center">
+                      <a href="" tabindex="6" class="forgot-password">Забули пароль ?</a>
                     </div>
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="text-center">
-                        <a href="" tabindex="5" class="forgot-password">Забули пароль ?</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
   </nav>
   <div class="container text-center">
     <h1>Текст для перевірки навбарів</h1>
