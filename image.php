@@ -6,7 +6,6 @@ require_once 'connection.php'; // подключаем скрипт
 // подключаемся к серверу
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link));
- 
 
 if ( isset( $_GET['id'] ) ) {
   // Здесь $id номер изображения
@@ -25,8 +24,6 @@ if ( isset( $_GET['id'] ) ) {
   }
 }
 
-// выполняем операции с базой данных
-     
 // закрываем подключение
-//mysqli_close($link);
+mysqli_close($link);
 ?>
