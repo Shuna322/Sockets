@@ -1,0 +1,19 @@
+.row div
+{
+    background: #333;
+    height: 300px;
+    widows: 50;
+    border-style: solid;
+    border-width: 20px;
+    border-color: #ff3333;
+    
+}
+.navbar_bg
+{
+    background-image: url(../img/navbar_bg.jpg);
+}
+
+.bar
+{
+    color: darkred;
+}

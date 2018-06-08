@@ -1,4 +1,16 @@
 /* General sizing */
 .dropdown-form-size {
-  width: 390px;
+  width: 350px;
 }
+
+body.s_layout_fixed {
+	background-color: white;
+	background-image: url(../img/background.jpg);
+}
+body.s_layout_fixed {
+        padding: 20px 0;
+        background-position: center; 
+       -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;

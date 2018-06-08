@@ -3922,6 +3922,7 @@ input[type="button"].btn-block {
 }
 
 .navbar {
+   
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -4239,7 +4240,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: darkred;
 }
 
 .navbar-light .navbar-nav .nav-link {
