@@ -1,3 +1,11 @@
+<?php
+    require_once("connection.php");
+    $query = "select * from photo where id_photo = 1";
+    $response = mysqli_query($dbc, $query);
+    $counter = 1;
+  ?>
+
+
 <!DOCTYPE html>
 <html lang="ua">
 
@@ -112,7 +120,7 @@
     </header>
 
     <content>
-        <div id="carusel" class="carousel slide" data-ride="carousel">
+        <div id="carusel" class="carousel slide " data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carusel" data-slide-to="0" class="active"></li>
                 <li data-target="#carusel" data-slide-to="1"></li>
@@ -140,99 +148,75 @@
   </a>
         </div>
 
+<!--       action-->
+       
         <nav id="carusel_ekshn" class="navbar navbar-expand-lg navbar-light navbar_bg">
             <h4 class="bar">Eкшн</h4>
 
         </nav>
-        <!-- Second carusel -->
-        <div id="carusel_eksh" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carusel_eksh" data-slide-to="0" class="active"></li>
-                <li data-target="#carusel_eksh" data-slide-to="1"></li>
-                <li data-target="#carusel_eksh" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <!--<img class="d-block w-100" src="img/background.jpg" alt="Перша сторінка">-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <!-- <img class="d-block w-100" src="img/background.jpg" alt="Друга сторінка">-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <!--<img class="d-block w-100" src="img/background.jpg" alt="Третя сторінка">-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                        </div>
-                    </div>
-                </div>
+        
+
+        <div class="container-fluid">
+        <div id="carousel_action" class="carousel slide carousel-fade" data-ride="carousel_action">
+               <?php
+                  if ($response){
+                    while ($row = mysqli_fetch_assoc($response)) {
+                      $image=$row ['photo'];
+                      if ($counter == 1){
+                        // carousel counter
+                        echo '<ol class="carousel-indicators">
+                              <li data-target="#carousel_action" data-slide-to="0" class="active"></li>';
+                            for ($i=1; $i < mysqli_num_rows($response); $i++){
+                              echo '<li data-target="#carousel" data-slide-to="'.$i.'"></li>';
+                            }
+                              echo' </ol>
+                               <div class="carousel-inner">';
+                               ////////////////////////////
+                      echo '<div class="carousel-item active">
+                        <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["photo"]).'" alt="Slide #'.$counter.'">
+                      </div>';
+                      $counter++;
+                    } else {
+                      echo '<div class="carousel-item">
+                      <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["photo"]).'" alt="Slide #'.$counter.'">
+                      </div>';
+                      $counter++;
+                      }
+                    }
+                  } else {
+                    echo 'Помилка';
+                    echo mysqli_error($dbc);
+                  }
+                  mysqli_close ($dbc);
+               ?>
+           
             </div>
-            <a class="carousel-control-prev" href="#carusel_eksh" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-            <a class="carousel-control-next" href="#carusel_eksh" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-        </div>
+            <a class="carousel-control-prev" href="#carousel_action" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel_action" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- Second carusel -->
+
 
 
 
