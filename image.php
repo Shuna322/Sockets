@@ -7,6 +7,11 @@ require_once 'connection.php'; // подключаем скрипт
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link));
 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
+
 if ( isset( $_GET['id'] ) ) {
   // Здесь $id номер изображения
   $id = (int)$_GET['id'];
