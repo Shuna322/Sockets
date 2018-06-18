@@ -32,3 +32,10 @@ if ( isset( $_GET['id'] ) ) {
 // закрываем подключение
 mysqli_close($link);
 ?>
+
+
+
+
+<div class="conteiner">
+    <div class="row">   </div>
+</div>
