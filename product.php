@@ -151,7 +151,7 @@ $id = (int)$_GET['id'];
                         <div id="collapseTwo" class="collapse" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="container-fluid">
-                                    <div id="carousel_action" class="carousel slide carousel-fade" data-ride="carousel_action">
+                                    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel_action">
                                         <?php
                                               if ($respons){
                                                 while ($row = mysqli_fetch_assoc($respons)) {
@@ -159,9 +159,10 @@ $id = (int)$_GET['id'];
                                                   if ($counter == 2){
                                                     // carousel counter
                                                     echo '<ol class="carousel-indicators">
-                                                          <li data-target="#carousel_action" data-slide-to="0" class="active"></li>';
+                                                          <li data-target="#carousel" data-slide-to="0" class="active"></li>';
                                                         for ($i=2; $i < mysqli_num_rows($respons); $i++){
-                                                          echo '<li data-target="#carousel" data-slide-to="'.$i.'"></li>';
+                                                            $temp=$i-1;
+                                                          echo '<li data-target="#carousel" data-slide-to="'.$temp.'"></li>';
                                                         }
                                                           echo' </ol>
                                                            <div class="carousel-inner">';
@@ -189,11 +190,11 @@ $id = (int)$_GET['id'];
                                             ?>
 
                                     </div>
-                               <a class="carousel-control-prev" href="#carousel_action" role="button" data-slide="prev">
+                               <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                   <span class="sr-only">Previous</span>
                                 </a>
-                                  <a class="carousel-control-next" href="#carousel_action" role="button" data-slide="next">
+                                  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                   <span class="sr-only">Next</span>
                                 </a>
