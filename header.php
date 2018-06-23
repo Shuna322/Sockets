@@ -1,8 +1,27 @@
-<?php include_once("config.php"); ?>
+<?php include_once("functions.php"); include_once("config.php");
+$status = func::checkLoginState($dbh);
+if (isset($_POST['email']) && isset($_POST['password']))
+{
+  $status2 = true;
+  $query = "SELECT * FROM users WHERE user_email = :email AND user_password = :password";
 
-<!DOCTYPE html>
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $stmt = $dbh->prepare($query);
+  $stmt->execute(array(':email' => $email,
+             ':password' => $password));
+
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  if ($row['user_id'] > 0)
+  {
+    func::createRecord($dbh, $row['user_email'], $row['user_id']);
+  }
+}else $status2 = false;
+?>
+
 <html lang="ua">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,45 +88,67 @@
               <i class="fa fa-shopping-cart" style="font-size:50px"></i>
           </a>
         </div>
-        <div class="nav-item dropdown mb-1 mt-1">
-          <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px"></i></a>
+        <div class="nav-item mb-1 mt-1">
+          <a class="nav-link" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px"></i></a>
           <div class="dropdown-menu dropdown-menu-right">
+
+            <!-- ******************************************************** -->
             <div class="col-lg-12 dropdown-form-size text-center">
-              <form id="ajax-login-form" action="" method="post" role="form" autocomplete="off">
-                <div class="form-group">
-                  <label for="email">Електрона адреса</label>
-                  <input type="text" name="email" id="email" tabindex="1" class="form-control" autocomplete="off">
-                </div>
-                <div class="form-group">
-                  <label for="password">Пароль</label>
-                  <input type="password" name="password" id="password" tabindex="2" class="form-control" autocomplete="off">
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <input type="checkbox" tabindex="3" name="account" id="account">
-                      <label for="account" id="accountLabel">Не маєте аккаунта ?</label>
-                    </div>
-                    <div class="col-lg-6">
-                      <input type="checkbox" tabindex="4" name="remember" id="remember">
-                      <label for="remember" id="rememberLabel">Запам`ятати мене</label>
-                    </div>
-                    <div class="col-lg-12">
-                      <input type="submit" name="login-submit" id="login-submit" tabindex="5" class="form-control btn btn-success" value="Авторизуватися">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="text-center">
-                        <a href="" tabindex="6" class="forgot-password">Забули пароль ?</a>
+
+              <?php
+              if($status)
+                {
+                  echo "Vu avtoruzovani ". $_SESSION['email'];
+                }
+                else
+                {
+                  if ($status2)
+                  {
+                    echo "Vas zaloginulu yak ".$_SESSION['email'];
+                  }
+                  else
+                  {
+                    echo '<form id="ajax-login-form" action="index.php" method="post" role="form" autocomplete="off">
+                      <div class="form-group">
+                        <label for="email">Електрона адреса</label>
+                        <input type="text" name="email" id="email" tabindex="1" class="form-control" autocomplete="off">
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+                      <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" name="password" id="password" tabindex="2" class="form-control" autocomplete="off">
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input type="checkbox" tabindex="3" name="account" id="account">
+                            <label for="account" id="accountLabel">Не маєте аккаунта ?</label>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="checkbox" tabindex="4" name="remember" id="remember">
+                            <label for="remember" id="rememberLabel">Запам`ятати мене</label>
+                          </div>
+                          <div class="col-lg-12">
+                            <input type="submit" name="login-submit" id="login-submit" tabindex="5" class="form-control btn btn-success" value="Авторизуватися">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="text-center">
+                              <a href="" tabindex="6" class="forgot-password">Забули пароль ?</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>';
+                }
+              }
+               ?>
+             </div>
+<!-- ******************************************************** -->
+
         </div>
+      </div>
+    </div>
     </nav>

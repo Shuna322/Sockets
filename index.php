@@ -1,12 +1,10 @@
-<?php
-    include_once("header.php");
-  ?>
-  
+<?php include_once("header.php"); include_once("config.php");?>
   <content>
     <div class="container">
       <div class="row">
         <div class="col-sm-10 offset-sm-1">
           <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+
               <?php
                 $response = $dbh->prepare("select * from carousel");
                 $response->execute();
@@ -64,6 +62,4 @@
     </div>
   </content>
 
-  <?php
-      include_once("footer.php");
-    ?>
+<?php include_once("footer.php");?>

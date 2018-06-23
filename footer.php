@@ -1,3 +1,4 @@
+<?php include_once('header.php'); ?>
 <footer>
   <!-- Navigation bar 2 -->
   <nav class="navbar navbar-expand-lg bg-light">
