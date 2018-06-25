@@ -54,15 +54,15 @@ if (isset($_POST['email']) && isset($_POST['password']))
                 <!-- Links -->
                 <ul class="navbar-nav nav-fill w-100">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:45px;">KejBOOM</a>
+                        <a class="nav-link" href="index.php"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:45px;">KejBOOM</a>
                     </li>
                 </ul>
             </nav>
 
             <!-- Navigation bar 1 -->
             <nav class="navbar navbar-expand-lg sticky-top navbar_bg navbar-light " >
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon" style="color:#87888e"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  style="width: 100%; float: none; margin-right: 0px;" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon" style="color:#ff0000"></span>
       </button>
                 <div class="collapse navbar-collapse navbar-nav justify-content-between align-items-center align-content-center" id="navbarSupportedContent">
                     <div class="nav-item dropdown mr-3 mb-1 mt-1">
@@ -70,16 +70,16 @@ if (isset($_POST['email']) && isset($_POST['password']))
               Каталог товарів
             </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#carusel_ekshn">Екшен </a>
+                            <a class="dropdown-item" href="index.php#carusel_ekshn">Екшен </a>
                             <a class="dropdown-item" href="#">Шутери</a>
                             <a class="dropdown-item" href="#">Пригоди</a>
                             <a class="dropdown-item" href="#">Інді</a>
                             <a class="dropdown-item" href="#">Симулятори </a>
                             <a class="dropdown-item" href="#">Стратегії</a>
-                            <a class="dropdown-item" href="#racing">Спорт і гонки</a>
+                            <a class="dropdown-item" href="index.php#racing">Спорт і гонки</a>
                             <a class="dropdown-item" href="#">Казуальні</a>
                             <a class="dropdown-item" href="#">Хоррор</a>
-                            <a class="dropdown-item" href="#">Виживання</a>
+                            <a class="dropdown-item" href="index.php#survival">Виживання</a>
                             <a class="dropdown-item" href="#">Відкритий світ</a>
                             <a class="dropdown-item" href="#">З сюжетом</a>
                         </div>
@@ -91,10 +91,10 @@ if (isset($_POST['email']) && isset($_POST['password']))
           </div>
         </div>        
         <div class="nav-item mr-3 mb-1 mt-1">
-          <a href="" id="cart" class="nav-link">
+          <a href="cart.php" id="cart" class="nav-link">
               <i class="fa fa-shopping-cart" style="font-size:50px; color:#87888e"></i>
           </a>
-        </div>
+      </div>
       <div class="nav-item mb-1 mt-1">
           <a class="nav-link" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px; color:#87888e"></i></a>
           <div class="dropdown-menu dropdown-menu-right">

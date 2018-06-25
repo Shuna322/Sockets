@@ -5,7 +5,7 @@ class func
 	{
 		if (!isset($_SESSION))
 		{
-//			session_start();
+			session_start();
 			debug_to_console("Auth");
 		}
 		if (isset($_COOKIE['userid']) && isset($_COOKIE['token']) && isset($_COOKIE['serial']))
@@ -20,6 +20,7 @@ class func
 			$stmt->execute(array(':userid' => $userid,
 								 ':token' => $token,
 								 ':serial' => $serial));
+
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 			if ($row['session_userid'] > 0)
@@ -47,6 +48,7 @@ class func
 			}
 		}
 	}
+
 	public static function createRecord($dbh, $user_email, $user_id)
 	{
 		$query = "INSERT INTO sessions (session_userid, session_token, session_serial) VALUES (:user_id, :token, :serial);";
@@ -64,20 +66,28 @@ class func
 							 ':token' => $token,
 							 ':serial' => $serial));
 	}
+
 	public static function createCookie($user_email, $user_id, $token, $serial)
 	{
 		setcookie('userid', $user_id, time() + (86400) * 30, "/");
 		setcookie('email', $user_email, time() + (86400) * 30, "/");
 		setcookie('token', $token, time() + (86400) * 30, "/");
 		setcookie('serial', $serial, time() + (86400) * 30, "/");
+    }
+        public static function createCookieshopping_cart( $shopping_cart)
+	{
+        setcookie('shopping_cart', $shopping_cart, time() + (86400) * 30, "/");
 	}
+
 	public static function deleteCookie()
 	{
 		setcookie('userid', '', time() - 1, "/");
 		setcookie('email', '', time()  - 1, "/");
 		setcookie('token', '', time()  - 1, "/");
 		setcookie('serial', '', time()  - 1, "/");
+        setcookie('shopping_cart', '', time()  - 1, "/");
 	}
+
 	public static function createSession($user_email, $user_id, $token, $serial)
 	{
 		if (!isset($_SESSION))
@@ -89,6 +99,7 @@ class func
 		$_SESSION['serial'] = $serial;
 		$_SESSION['email'] = $user_email;
 	}
+
 	public static function createString($len)
 	{
 		$string = "1qay2wsx3edc4rfv5tgb6zhn7ujm8ik9olpAQWSXEDCVFRTGBNHYZUJMKILOP";
@@ -96,6 +107,7 @@ class func
 		return substr(str_shuffle($string), 0, 30);
 	}
 }
+
 function debug_to_console( $data ) {
     $output = $data;
     if ( is_array( $output ) )
@@ -103,4 +115,4 @@ function debug_to_console( $data ) {
 
     echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 }
- ?>
+?>

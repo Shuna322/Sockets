@@ -1,4 +1,6 @@
-<?php
+<?php include_once("config.php");include_once("functions.php");include_once("head.php");?>
+  
+   <?php
     require_once("connection.php");
 if ( isset( $_GET['id'] ) ){
 $id = (int)$_GET['id'];
@@ -14,48 +16,48 @@ $id = (int)$_GET['id'];
     }
 }
   ?>
+<?php
+if(isset($_POST["add_to_cart"]))
+{
+	if(isset($_SESSION["shopping_cart"]))
+	{
+		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+		if(!in_array($_GET["id"], $item_array_id))
+		{
+            debug_to_console(554654) ;
+			$count = count($_SESSION["shopping_cart"]);
+			$item_array = array(
+				'item_id'			=>	$_GET["id"],
+				'item_name'			=>	$_POST["hidden_name"],
+				'item_price'		=>	$_POST["hidden_price"],
+				'item_quantity'		=>	$_POST["quantity"]
+			);
+			$_SESSION["shopping_cart"][$count] = $item_array;
+		}
+		else
+		{
+			echo '<script>alert("Item Already Added")</script>';
+		}
+	}
+	else
+	{
+		$item_array = array(
+			'item_id'			=>	$_GET["id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
+			'item_quantity'		=>	$_POST["quantity"]
+		);
+		$_SESSION["shopping_cart"][0] = $item_array;
+	}
+}
 
-
-    <!DOCTYPE html>
-    <html lang="ua">
-
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>KejBOOM</title>
-        <link rel="icon" href="img\logo.png">
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/stl.css" rel="stylesheet">
-        <!-- Custom size css -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/regular.css" integrity="sha384-EWu6DiBz01XlR6XGsVuabDMbDN6RT8cwNoY+3tIH+6pUCfaNldJYJQfQlbEIWLyA" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/brands.css" integrity="sha384-VGCZwiSnlHXYDojsRqeMn3IVvdzTx5JEuHgqZ3bYLCLUBV8rvihHApoA1Aso2TZA" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
-    </head>
-
-    <body class="s_layout_fixed">
-
-        <nav class="navbar bg-light navbar_bg sticky-top" style="padding: 0px;">
-            <!-- Links -->
-            <ul class="navbar-nav nav-fill w-100">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:45px;">KejBOOM</a>
-                </li>
-            </ul>
-        </nav>
-
-
-
+?>
 
 
         <div class="container-fluid" style="margin-top:10px">
             <div class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4  col-xl-4 ">
                         <?php 
                     
                     
@@ -71,7 +73,7 @@ $id = (int)$_GET['id'];
                                   }
                            ?>
                     </div>
-                    <div class="col-7">
+                    <div class="col-12 col-sm-12  col-md-7 col-lg-7  col-xl-7 ">
                         <div class="card box-shadow">
                               <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">
@@ -112,10 +114,22 @@ $id = (int)$_GET['id'];
                                    ?>
                                     </li>
                                   
+                             <form method="post" action="product.php?action=add&id=<?php echo $row["id_game"]; ?>">
+                                            <input type="text" name="quantity" value="1" class="form-control" >
+
+						                    <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" >
+
+						                    <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" >
+
+						                  <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Додати в козрину" />
+                                    </form>
+                                    
                                 </ul>
+<!--
                                 <button type="button" class="btn btn-lg btn-block btn-primary">Додати в корзину</button>
                                 <button type="button" class="btn btn-lg btn-block btn-primary">Купити</button>
                               </div>
+-->
                         </div>
                     </div>
 
@@ -210,17 +224,17 @@ $id = (int)$_GET['id'];
                         </div>
                         <div id="collapseThree" class="collapse" data-parent="#accordion">
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                               coming soon...
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.js"></script>
-    </body>
 
-    </html>
+
+
+
+<?php
+      include_once("footer.php");
+    ?>
