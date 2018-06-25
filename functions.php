@@ -69,10 +69,20 @@ class func
 
 	public static function createCookie($user_email, $user_id, $token, $serial)
 	{
-		setcookie('userid', $user_id, time() + (86400) * 30, "/");
-		setcookie('email', $user_email, time() + (86400) * 30, "/");
-		setcookie('token', $token, time() + (86400) * 30, "/");
-		setcookie('serial', $serial, time() + (86400) * 30, "/");
+		if (!empty($_POST['remember']))
+		{
+			setcookie('userid', $user_id, time() + (86400) * 30, "/");
+			setcookie('email', $user_email, time() + (86400) * 30, "/");
+			setcookie('token', $token, time() + (86400) * 30, "/");
+			setcookie('serial', $serial, time() + (86400) * 30, "/");
+		}
+		else
+		{
+			setcookie('userid', $user_id, time() + (3600) * 4, "/");
+			setcookie('email', $user_email, time() + (3600) * 4, "/");
+			setcookie('token', $token, time() + (3600) * 4, "/");
+			setcookie('serial', $serial, time() + (3600) * 4, "/");
+		}
 	}
 
 	public static function deleteCookie()

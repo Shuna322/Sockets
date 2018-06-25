@@ -73,8 +73,6 @@ if (isset($_POST['email']) && isset($_POST['password']))
             <a class="dropdown-item" href="#">Процесори</a>
             <a class="dropdown-item" href="#">Відеокарти</a>
             <a class="dropdown-item" href="#">Оперативна пам'ять</a>
-            <a class="dropdown-item" href="#">Системи охолодження</a>
-            <a class="dropdown-item" href="#">Жорсткі диски та дискові масиви</a>
           </div>
         </div>
         <div class="nav-item input-group mr-3 mb-1 mt-1">
