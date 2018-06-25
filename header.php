@@ -1,12 +1,11 @@
 <?php include_once("functions.php"); include_once("config.php");
 $status = func::checkLoginState($dbh);
-if (isset($_POST['email']) && isset($_POST['password']))
+if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 {
-  $status2 = true;
   $query = "SELECT * FROM users WHERE user_email = :email AND user_password = :password";
 
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = md5(md5($_POST['password']));
 
   $stmt = $dbh->prepare($query);
   $stmt->execute(array(':email' => $email,
@@ -14,11 +13,21 @@ if (isset($_POST['email']) && isset($_POST['password']))
 
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  if ($row['user_id'] > 0)
+  if ($stmt->rowCount() == 1)
   {
     func::createRecord($dbh, $row['user_email'], $row['user_id']);
+    $status2 = true;
+    echo '<script type="text/javascript">',
+         'displayNotification("success", "fa fa-check-circle", "Вдало !", "Вас успішно авторизовано !");',
+         '</script>';
+  } else
+  {
+    echo '<script type="text/javascript">',
+         'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Не правильно введена електрона адреса або пароль !");',
+         '</script>';
   }
-}else $status2 = false;
+}
+else $status2 = false;
 ?>
 
 <html lang="ua">
@@ -33,18 +42,20 @@ if (isset($_POST['email']) && isset($_POST['password']))
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom size css -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animate.css">
   <!-- Icon fonts -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/regular.css" integrity="sha384-EWu6DiBz01XlR6XGsVuabDMbDN6RT8cwNoY+3tIH+6pUCfaNldJYJQfQlbEIWLyA" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/brands.css" integrity="sha384-VGCZwiSnlHXYDojsRqeMn3IVvdzTx5JEuHgqZ3bYLCLUBV8rvihHApoA1Aso2TZA" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
-
-
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script src="js/bootstrap.bundle.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/bootstrap-notify.min.js"></script>
+
 </head>
 
 <body>
@@ -86,27 +97,36 @@ if (isset($_POST['email']) && isset($_POST['password']))
               <i class="fa fa-shopping-cart" style="font-size:50px"></i>
           </a>
         </div>
-        <div class="nav-item mb-1 mt-1">
-          <a class="nav-link" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px"></i></a>
+        <div class="nav-item mb-1 mt-1 ">
+          <a class="nav-link text-center" id="navbardrop" data-toggle="dropdown"><i class="far fa-user" style="font-size:50px"></i></a>
           <div class="dropdown-menu dropdown-menu-right">
 
             <!-- ******************************************************** -->
             <div class="col-lg-12 dropdown-form-size text-center">
-
               <?php
               if($status)
                 {
-                  echo "Vu avtoruzovani ". $_SESSION['email'];
+                  echo "Vu avtoruzovani ". $_SESSION['email'].'
+                  <form role="form" action="logout.php" method="post" autocomplete="off">
+                  <div class="col-lg-12">
+                    <input type="submit" name="logout" id="logout-submit" class="btn btn-danger" value="Вийти з акаунту">
+                  </div>
+                  </form>';
                 }
                 else
                 {
                   if ($status2)
                   {
-                    echo "Vas zaloginulu yak ".$_SESSION['email'];
+                    echo "Vas zaloginulu yak ".$_SESSION['email'].'
+                    <form role="form" action="logout.php" method="post" autocomplete="off">
+                    <div class="col-lg-12">
+                      <input type="submit" name="logout" id="logout-submit" class="btn btn-danger" value="Вийти з акаунту">
+                    </div>
+                    </form>';
                   }
                   else
                   {
-                    echo '<form id="ajax-login-form" action="index.php" method="post" role="form" autocomplete="off">
+                    echo '<form method="post" role="form" autocomplete="off">
                       <div class="form-group">
                         <label for="email">Електрона адреса</label>
                         <input type="text" name="email" id="email" tabindex="1" class="form-control" autocomplete="off">
@@ -118,8 +138,8 @@ if (isset($_POST['email']) && isset($_POST['password']))
                       <div class="form-group">
                         <div class="row">
                           <div class="col-lg-6">
-                            <input type="checkbox" tabindex="3" name="account" id="account">
-                            <label for="account" id="accountLabel">Не маєте аккаунта ?</label>
+                            <input type="checkbox" tabindex="3" name="register" id="register">
+                            <label for="register" id="registerLabel">Не маєте аккаунта ?</label>
                           </div>
                           <div class="col-lg-6">
                             <input type="checkbox" tabindex="4" name="remember" id="remember">

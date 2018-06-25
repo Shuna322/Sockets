@@ -98,6 +98,7 @@ class func
 		if (!isset($_SESSION))
 		{
 			session_start();
+			debug_to_console("Auth from create session");
 		}
 		$_SESSION['userid'] = $user_id;
 		$_SESSION['token'] = $token;
