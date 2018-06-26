@@ -1,5 +1,6 @@
 <?php include_once("functions.php"); include_once("config.php");
 $status = func::checkLoginState($dbh);
+$status2 = false;
 if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 {
   $query = "SELECT * FROM users WHERE user_email = :email AND user_password = :password";
@@ -19,10 +20,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
     $status2 = true;
   }
 }
-else $status2 = false;
-
 ?>
-
 <html lang="ua">
 <head>
   <meta charset="utf-8">
@@ -107,9 +105,7 @@ else $status2 = false;
                   </form>';
                 }
                 else
-                {
-                  if ($status2)
-                  {
+                  if ($status2){
                     echo "Vas zaloginulu yak ".$_SESSION['email'].'
                     <form role="form" action="logout.php" method="post" autocomplete="off">
                     <div class="col-lg-12">
@@ -147,14 +143,13 @@ else $status2 = false;
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="text-center">
-                              <a href="" tabindex="6" class="forgot-password">Забули пароль ?</a>
+                              <a href="forgot_password.php" tabindex="6" class="forgot-password">Забули пароль ?</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </form>';
                 }
-              }
                ?>
              </div>
 <!-- ******************************************************** -->

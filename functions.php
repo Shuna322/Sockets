@@ -112,6 +112,19 @@ class func
 
 		return substr(str_shuffle($string), 0, 30);
 	}
+
+	public static function generatePass($length = 14){
+
+		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $count = mb_strlen($chars);
+
+    for ($i = 0, $result = ''; $i < $length; $i++) {
+        $index = rand(0, $count - 1);
+        $result .= mb_substr($chars, $index, 1);
+    }
+
+    return $result;
+	}
 }
 
 function debug_to_console( $data ) {

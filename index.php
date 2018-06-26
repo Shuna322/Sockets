@@ -2,7 +2,7 @@
   <content>
     <div class="container">
       <div class="row">
-        <div class="col-sm-10 offset-sm-1">
+        <div class="col-10 offset-1">
           <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
 
               <?php
@@ -12,7 +12,6 @@
                   if ($response){
                     $rows = $response->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($rows as $row) {
-                      $image=$row['picture'];
                       if ($counter == 1){
                         // carousel counter
                         echo '<ol class="carousel-indicators">
@@ -59,6 +58,37 @@
           </div>
         </div>
       </div>
+        <div class="row jumbotron">
+          <div class="col-12 text-center h2 text-info">
+            Вас це може зацікавити
+          </div>
+          <div class="col-12 d-flex">
+            <?php
+            $stmt = $dbh->prepare("SELECT good_id, good_name, good_picture, good_price FROM goods WHERE good_id = 1 OR good_id = 3 OR good_id = 5 OR good_id = 8");
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as $row) {
+                echo '<div class="card border-primary m-3" style="max-width: 30rem;">
+
+                    <a href="item.php?id='.$row['good_id'].'">
+                      <img class="card-img-top img-responsive rounded" src="data:image/jpeg;base64,'.base64_encode($row["good_picture"]).'" style="object-fit: cover" height="260" >
+                    </a>
+
+                  <div class="card-header">
+                  <a href="item.php?id='.$row['good_id'].'">
+                   '.$row["good_name"].'
+                  </a>
+                  </div>
+                    <div class="card-footer bg-transparent border-primary align-items-bottom">
+                      <p class="card-text">Вартість: '.$row['good_price'].'₴</p>
+                      <a href="#" role="button" class="btn btn-outline-success">В корзину</a>
+                    </div>
+                </div>';
+              }
+             ?>
+          </div>
+        </div>
+
     </div>
   </content>
 
