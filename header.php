@@ -17,17 +17,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
   {
     func::createRecord($dbh, $row['user_email'], $row['user_id']);
     $status2 = true;
-    echo '<script type="text/javascript">',
-         'displayNotification("success", "fa fa-check-circle", "Вдало !", "Вас успішно авторизовано !");',
-         '</script>';
-  } else
-  {
-    echo '<script type="text/javascript">',
-         'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Не правильно введена електрона адреса або пароль !");',
-         '</script>';
   }
 }
 else $status2 = false;
+
 ?>
 
 <html lang="ua">

@@ -219,9 +219,6 @@
   </nav>
 </footer>
 
-
-
-
 <?php
 if (isset($_POST['email']) && !empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 {
@@ -270,13 +267,46 @@ if (isset($_POST['email']) && !empty($_POST['register']) && filter_var($_POST['e
          'displayNotification("success", "fa fa-check-circle", "Вдало !", "Перевірте вашу електрону адресу !");',
          '</script>';
   }
-}
-  else if (isset($_POST['email']) && !empty($_POST['register']) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    echo '<script type="text/javascript">',
-         'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Не правильно введена електрона адреса !");',
-         '</script>';
-  }
- ?>
+} else
+if (isset($_POST['email']) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+  $status2 = false;
+   echo '<script type="text/javascript">',
+        'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Не правильно введена електрона адреса !");',
+        '</script>';
+ } else
+ if (isset($_POST['email']) && ($_POST['password'] == '') && empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+   $status2 = false;
+   echo '<script type="text/javascript">',
+        'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Введіть пароль !");',
+        '</script>';
+ }
+ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+ {
+   $query = "SELECT * FROM users WHERE user_email = :email AND user_password = :password";
+
+   $email = $_POST['email'];
+   $password = md5(md5($_POST['password']));
+
+   $stmt = $dbh->prepare($query);
+   $stmt->execute(array(':email' => $email,
+              ':password' => $password));
+
+   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+   if ($stmt->rowCount() == 1)
+   {
+     echo '<script type="text/javascript">',
+          'displayNotification("success", "fa fa-check-circle", "Вдало !", "Вас успішно авторизовано !");',
+          '</script>';
+   } else
+   {
+     echo '<script type="text/javascript">',
+          'displayNotification("danger", "fa fa-exclamation-circle", "Помилка !\n", "Не правильно введена електрона адреса або пароль !");',
+          '</script>';
+   }
+ }
+?>
+
 </body>
 
 </html>
