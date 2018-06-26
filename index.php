@@ -2,7 +2,7 @@
   <content>
     <div class="container">
       <div class="row">
-        <div class="col-10 offset-1">
+        <div class="col-12 p-0">
           <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
 
               <?php
@@ -23,12 +23,24 @@
                                <div class="carousel-inner">';
                                ////////////////////////////
                       echo '<div class="carousel-item active">
-                        <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" style="object-fit: cover" height="520">
+                      <a href="'.$row['link'].'">
+                        <img class="d-block w-100" id="carousel-slide-image" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" height="520">
+                      </a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>'.$row['title'].'</h5>
+                        <p>'.$row['text'].'</p>
+                      </div>
                       </div>';
                       $counter++;
                     } else {
                       echo '<div class="carousel-item">
-                      <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" style="object-fit: cover" height="520">
+                      <a href="'.$row['link'].'">
+                        <img class="d-block w-100" id="carousel-slide-image" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" height="520">
+                      </a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>'.$row['title'].'</h5>
+                        <p>'.$row['text'].'</p>
+                      </div>
                       </div>';
                       $counter++;
                       }
@@ -58,19 +70,18 @@
           </div>
         </div>
       </div>
-        <div class="row jumbotron">
-          <div class="col-12 text-center h2 text-info">
+        <div class="row jumbotron d-flex justify-content-around">
+          <div class="col-12 text-center h2 text-info ">
             Вас це може зацікавити
           </div>
-          <div class="col-12 d-flex">
+
             <?php
-            $stmt = $dbh->prepare("SELECT good_id, good_name, good_picture, good_price FROM goods WHERE good_id = 1 OR good_id = 3 OR good_id = 5 OR good_id = 8");
+            $stmt = $dbh->prepare("SELECT good_id, good_name, good_picture, good_price FROM goods WHERE good_id = 1 OR good_id = 4 OR good_id = 5 OR good_id = 7");
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
                 echo '
-                <div class="card border-primary m-3" style="max-width: 30rem;">
-
+                <div class="card border-primary m-3 col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3" style="max-width: 14.5rem;">
                     <a href="item.php?id='.$row['good_id'].'">
                       <img class="card-img-top img-responsive rounded" src="data:image/jpeg;base64,'.base64_encode($row["good_picture"]).'" style="object-fit: cover" height="260" >
                     </a>
@@ -88,7 +99,7 @@
                 ';
               }
              ?>
-          </div>
+
         </div>
 
     </div>

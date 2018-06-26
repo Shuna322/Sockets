@@ -2,3 +2,13 @@
 .dropdown-form-size {
   width: 386px;
 }
+
+#carousel-slide-image {
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+#carousel-slide-image:hover {
+  object-fit: cover;
+  filter: brightness(35%);
+}
