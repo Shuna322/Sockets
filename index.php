@@ -23,12 +23,12 @@
                                <div class="carousel-inner">';
                                ////////////////////////////
                       echo '<div class="carousel-item active">
-                        <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'">
+                        <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" style="object-fit: cover" height="520">
                       </div>';
                       $counter++;
                     } else {
                       echo '<div class="carousel-item">
-                      <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'">
+                      <img class="d-block w-100" src="data:image/jpeg;base64,'.base64_encode($row["picture"]).'" alt="Slide #'.$counter.'" style="object-fit: cover" height="520">
                       </div>';
                       $counter++;
                       }
@@ -68,7 +68,8 @@
             $stmt->execute();
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
-                echo '<div class="card border-primary m-3" style="max-width: 30rem;">
+                echo '
+                <div class="card border-primary m-3" style="max-width: 30rem;">
 
                     <a href="item.php?id='.$row['good_id'].'">
                       <img class="card-img-top img-responsive rounded" src="data:image/jpeg;base64,'.base64_encode($row["good_picture"]).'" style="object-fit: cover" height="260" >
@@ -83,7 +84,8 @@
                       <p class="card-text">Вартість: '.$row['good_price'].'₴</p>
                       <a href="#" role="button" class="btn btn-outline-success">В корзину</a>
                     </div>
-                </div>';
+                </div>
+                ';
               }
              ?>
           </div>

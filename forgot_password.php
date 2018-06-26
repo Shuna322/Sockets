@@ -16,8 +16,8 @@ include_once("header.php");
                     Новий пароль надійде на вказану електрону адресу ?
                   </div>
                   <form class="" action="" method="GET">
-                    <input type="text" name="email" placeholder="Введіть електрону адресу." class="form-control">
-                    <input type="submit" name="forgot-submit" id="forgot-submit" class="form-control btn btn-success" value="Надіслати">
+                    <input type="text" name="email" placeholder="Введіть електрону адресу." class="form-control m-2">
+                    <input type="submit" name="forgot-submit" id="forgot-submit" class="form-control btn btn-success m-2" value="Надіслати">
                   </form>
            </div>
          </div>
