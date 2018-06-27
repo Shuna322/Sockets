@@ -1,21 +1,4 @@
-<?php include_once("header.php");
-if(isset($_GET["action"]))
-{
-	if($_GET["action"] == "delete")
-	{
-		foreach($_SESSION["shopping_cart"] as $keys => $values)
-		{
-			if($values["item_id"] == $_GET["id"])
-			{
-				unset($_SESSION["shopping_cart"][$keys]);
-        echo '<script type="text/javascript">',
-             'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар видалено !");',
-             '</script>';
-			}
-		}
-	}
-}
-?>
+<?php include_once("header.php");?>
 
 <content>
   <div class="container">

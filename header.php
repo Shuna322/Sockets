@@ -84,6 +84,21 @@ if (isset($_GET['add_to_cart']))
     $notificationFromCard = 1;
   }
 }
+
+if(isset($_GET["action"]))
+{
+	if($_GET["action"] == "delete")
+	{
+		foreach($_SESSION["shopping_cart"] as $keys => $values)
+		{
+			if($values["item_id"] == $_GET["id"])
+			{
+				unset($_SESSION["shopping_cart"][$keys]);
+        $notificationFromCard = 3;
+			}
+		}
+	}
+}
 ?>
 <html lang="ua">
 <head>
@@ -148,8 +163,7 @@ if (isset($_GET['add_to_cart']))
           </form>
         <div class="nav-item mr-3 mb-1 mt-1">
           <a href="cart.php" id="cart" class="nav-link">
-              <i class="fa fa-shopping-cart" style="font-size:50px"></i><span class="badge badge-pill badge-secondary" style="position:absolute;">
-                <?php
+              <i class="fa fa-shopping-cart" style="font-size:50px"></i><span class="badge badge-pill badge-secondary" style="position:absolute;"><?php
                 $itemsInCart = 0;
                 if(isset($_SESSION['shopping_cart'])){
                 foreach($_SESSION["shopping_cart"] as $keys => $values)
@@ -159,8 +173,7 @@ if (isset($_GET['add_to_cart']))
                 if ($itemsInCart != 0) {
                   echo $itemsInCart;
                 }
-              } else echo $itemsInCart;?>
-              </span>
+              } else echo $itemsInCart;?></span>
           </a>
         </div>
         <div class="nav-item mb-1 mt-1 ">

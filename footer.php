@@ -246,6 +246,11 @@ switch ($notificationFromCard) {
        'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар доповнено на '.$_GET['item_amount'].' одиниць !");',
        '</script>';
     break;
+  case 3:
+  echo '<script type="text/javascript">',
+       'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар видалено !");',
+       '</script>';
+    break;
 }
 
 
