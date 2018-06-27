@@ -20,6 +20,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
     $status2 = true;
   }
 }
+
+
 ?>
 <html lang="ua">
 <head>
@@ -43,10 +45,9 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <!-- <script src="js/bootstrap.min.js"></script> -->
-  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
   <script src="js/bootstrap-notify.min.js"></script>
-
 </head>
 
 <body>
@@ -54,7 +55,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
       <!-- Links -->
       <ul class="navbar-nav nav-fill w-100">
         <li class="nav-item">
-          <a class="nav-link" href="http:\\shuna.cf\"><img src="img\logo.png" alt="Logo" class="mr-3" style="width:45px;">Sockets</a>
+          <a class="nav-link" href="http:\\shuna.cf\">Sockets</a>
         </li>
       </ul>
     </nav>
@@ -71,10 +72,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
               Каталог товарів
             </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Материнські плати</a>
-            <a class="dropdown-item" href="#">Процесори</a>
-            <a class="dropdown-item" href="#">Відеокарти</a>
-            <a class="dropdown-item" href="#">Оперативна пам'ять</a>
+            <a class="dropdown-item" href="index.php#motherboards">Материнські плати</a>
+            <a class="dropdown-item" href="index.php#CPU">Процесори</a>
+            <a class="dropdown-item" href="index.php#GPU">Відеокарти</a>
+            <a class="dropdown-item" href="index.php#RAM">Оперативна пам'ять</a>
           </div>
         </div>
         <div class="nav-item input-group mr-3 mb-1 mt-1">
@@ -84,7 +85,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
           </div>
         </div>
         <div class="nav-item mr-3 mb-1 mt-1">
-          <a href="" id="cart" class="nav-link">
+          <a href="cart.php" id="cart" class="nav-link">
               <i class="fa fa-shopping-cart" style="font-size:50px"></i>
           </a>
         </div>
