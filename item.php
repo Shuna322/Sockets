@@ -57,13 +57,16 @@ else
     }
     else
     {
-      $item_aray = array(
+      $item_array = array(
         'item_id' => $_GET['hiden_item_id'],
         'item_name' => $_GET['hiden_item_name'],
         'item_price' => $_GET['hiden_item_price'],
         'item_amount' => $_GET['item_amount']
       );
-      $_SESSION['shoping_cart'][0] = $item_aray;
+      $_SESSION['shopping_cart'][0] = $item_array;
+      echo '<script type="text/javascript">',
+           'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар додано !");',
+           '</script>';
     }
   }
 }
