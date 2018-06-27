@@ -78,15 +78,27 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
             <a class="dropdown-item" href="index.php#RAM">Оперативна пам'ять</a>
           </div>
         </div>
-        <div class="nav-item input-group mr-3 mb-1 mt-1">
-          <input type="text" class="form-control" placeholder="Пошук" aria-label="Пошук" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Знайти</button>
-          </div>
-        </div>
+          <form action="search.php" method="get" class="nav-item input-group mr-3 mb-1 mt-1">
+            <input type="text" class="form-control" name="search" placeholder="Пошук" aria-label="Пошук" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Знайти</button>
+            </div>
+          </form>
         <div class="nav-item mr-3 mb-1 mt-1">
           <a href="cart.php" id="cart" class="nav-link">
-              <i class="fa fa-shopping-cart" style="font-size:50px"></i>
+              <i class="fa fa-shopping-cart" style="font-size:50px"></i><span class="badge badge-pill badge-secondary" style="position:absolute;">
+                <?php
+                $itemsInCart = 0;
+                if(isset($_SESSION['shopping_cart'])){
+                foreach($_SESSION["shopping_cart"] as $keys => $values)
+                {
+                  $itemsInCart += $values['item_amount'];
+                }
+                if ($itemsInCart != 0) {
+                  echo $itemsInCart;
+                }
+              } else echo $itemsInCart;?>
+              </span>
           </a>
         </div>
         <div class="nav-item mb-1 mt-1 ">
@@ -98,19 +110,23 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
               <?php
               if($status)
                 {
-                  echo "Vu avtoruzovani ". $_SESSION['email'].'
-                  <form role="form" action="logout.php" method="post" autocomplete="off">
-                  <div class="col-lg-12">
-                    <input type="submit" name="logout" id="logout-submit" class="btn btn-danger" value="Вийти з акаунту">
+                  echo '<div class="col-12 h5 text-centered text-info">Ви авторизовані як '.$_SESSION['email'].'</div>
+                  <div class="col-12">
+                    <a href="account.php" role="button" class="btn btn-primary btn-lg btn-block m-1 active">Налаштування профілю</a>
+                  </div>
+                  <div class="col-12">
+                    <a href="logout.php" role="button" id="logout-submit" class="btn btn-danger btn-lg btn-block m-1 active">Вийти з акаунту</a>
                   </div>
                   </form>';
                 }
                 else
                   if ($status2){
-                    echo "Vas zaloginulu yak ".$_SESSION['email'].'
-                    <form role="form" action="logout.php" method="post" autocomplete="off">
-                    <div class="col-lg-12">
-                      <input type="submit" name="logout" id="logout-submit" class="btn btn-danger" value="Вийти з акаунту">
+                    echo '<div class="col-12 h5 text-centered text-info">Ви авторизовані як '.$_SESSION['email'].'</div>
+                    <div class="col-12">
+                      <a href="account.php" role="button" class="btn btn-primary btn-lg btn-block m-1 active">Налаштування профілю</a>
+                    </div>
+                    <div class="col-12">
+                      <a href="logout.php" role="button" id="logout-submit" class="btn btn-danger btn-lg btn-block m-1 active">Вийти з акаунту</a>
                     </div>
                     </form>';
                   }

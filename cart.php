@@ -22,6 +22,7 @@ if(isset($_GET["action"]))
     <div class="row jumbotron">
       <div class="col-12 h2 text-info text-center">Кошик</div>
       <?php
+			if(isset($_SESSION['shopping_cart'])){
         if (count($_SESSION['shopping_cart']) == 0)
         {
           echo '<div class="col-12 h5 text-center mt-2">Тут порожньо, додайте товару з каталогу</div>';
@@ -60,6 +61,7 @@ if(isset($_GET["action"]))
             </tbody>
             </table>';
         }
+			} else echo '<div class="col-12 h5 text-center mt-2">Тут порожньо, додайте товару з каталогу</div>';
        ?>
       </div>
     </div>
