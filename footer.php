@@ -234,6 +234,21 @@
 </footer>
 
 <?php
+switch ($notificationFromCard) {
+  case 1:
+  echo '<script type="text/javascript">',
+       'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар додано !");',
+       '</script>';
+    break;
+
+  case 2:
+  echo '<script type="text/javascript">',
+       'displayNotification("success", "fa fa-check-circle", "Вдало !", "Товар доповнено на '.$_GET['item_amount'].' одиниць !");',
+       '</script>';
+    break;
+}
+
+
 if (isset($_POST['email']) && !empty($_POST['register']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 {
 

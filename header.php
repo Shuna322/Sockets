@@ -22,6 +22,68 @@ if (isset($_POST['email']) && isset($_POST['password']) && empty($_POST['registe
 }
 
 
+$notificationFromCard = NULL;  //Виводить сповіщення на сторінку залежно від стану 1 додано; 2 доповнено
+if (isset($_GET['add_to_cart']))
+{
+  if (isset($_SESSION['shopping_cart']))
+  {
+    $item_array_id = array_column($_SESSION['shopping_cart'],'item_id');
+    if(!in_array($_GET['hiden_item_id'], $item_array_id))
+    {
+      $count = count($_SESSION["shopping_cart"]);
+      $item_array = array(
+        'item_id' => $_GET['hiden_item_id'],
+        'item_name' => $_GET['hiden_item_name'],
+        'item_price' => $_GET['hiden_item_price'],
+        'item_amount' => $_GET['item_amount']
+      );
+      $_SESSION["shopping_cart"][$count] = $item_array;
+
+      $notificationFromCard = 1;
+    }
+    else
+    {
+      // Знайти рядок масиву з певним ІД в масиві сесії
+      $id = array_search(array('item_id' => $_GET['hiden_item_id'], 'item_name' => $_GET['hiden_item_name'], 'item_price' => $_GET['hiden_item_price'], 'item_amount' => $_GET['item_amount']), $_SESSION["shopping_cart"]);
+      debug_to_console($id);
+      $old_amount;
+      foreach($_SESSION["shopping_cart"] as $keys => $values)
+      {
+        if($keys == $id)
+        {
+          $old_amount = $values['item_amount'];
+
+          unset($_SESSION["shopping_cart"][$keys]);
+          debug_to_console($old_amount." ".$keys);
+          $count = count($_SESSION["shopping_cart"]);
+          $item_array = array(
+            'item_id' => $_GET['hiden_item_id'],
+            'item_name' => $_GET['hiden_item_name'],
+            'item_price' => $_GET['hiden_item_price'],
+            'item_amount' => $_GET['item_amount']+$old_amount
+          );
+
+          $_SESSION["shopping_cart"][$count] = $item_array;
+
+
+          $notificationFromCard = 2;
+        }
+      }
+    }
+  }
+  else
+  {
+    $item_array = array(
+      'item_id' => $_GET['hiden_item_id'],
+      'item_name' => $_GET['hiden_item_name'],
+      'item_price' => $_GET['hiden_item_price'],
+      'item_amount' => $_GET['item_amount']
+    );
+    $_SESSION['shopping_cart'][0] = $item_array;
+
+    $notificationFromCard = 1;
+  }
+}
 ?>
 <html lang="ua">
 <head>
