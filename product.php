@@ -1,4 +1,4 @@
-<?php include_once("config.php");include_once("functions.php");include_once("head.php");?>
+<?php include_once("header.php"); include_once("config.php");?>
   
    <?php
     require_once("connection.php");
@@ -24,7 +24,7 @@ if(isset($_POST["add_to_cart"]))
 		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
 		if(!in_array($_GET["id"], $item_array_id))
 		{
-            debug_to_console(554654) ;
+           
 			$count = count($_SESSION["shopping_cart"]);
 			$item_array = array(
 				'item_id'			=>	$_GET["id"],
@@ -115,7 +115,7 @@ if(isset($_POST["add_to_cart"]))
                                     </li>
                                   
                              <form method="post" action="product.php?action=add&id=<?php echo $row["id_game"]; ?>">
-                                            <input type="text" name="quantity" value="1" class="form-control" >
+                                            <input type="number" name="quantity" value="1" min="1" step="1" max="<?php echo $row["count"]; ?>" class="form-control" >
 
 						                    <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" >
 
@@ -233,7 +233,7 @@ if(isset($_POST["add_to_cart"]))
         </div>
 
 
-
+</div>
 
 <?php
       include_once("footer.php");

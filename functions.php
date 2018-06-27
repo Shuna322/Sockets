@@ -69,14 +69,20 @@ class func
 
 	public static function createCookie($user_email, $user_id, $token, $serial)
 	{
-		setcookie('userid', $user_id, time() + (86400) * 30, "/");
-		setcookie('email', $user_email, time() + (86400) * 30, "/");
-		setcookie('token', $token, time() + (86400) * 30, "/");
-		setcookie('serial', $serial, time() + (86400) * 30, "/");
-    }
-        public static function createCookieshopping_cart( $shopping_cart)
-	{
-        setcookie('shopping_cart', $shopping_cart, time() + (86400) * 30, "/");
+		if (!empty($_POST['remember']))
+		{
+			setcookie('userid', $user_id, time() + (86400) * 30, "/");
+			setcookie('email', $user_email, time() + (86400) * 30, "/");
+			setcookie('token', $token, time() + (86400) * 30, "/");
+			setcookie('serial', $serial, time() + (86400) * 30, "/");
+		}
+		else
+		{
+			setcookie('userid', $user_id, time() + (3600) * 4, "/");
+			setcookie('email', $user_email, time() + (3600) * 4, "/");
+			setcookie('token', $token, time() + (3600) * 4, "/");
+			setcookie('serial', $serial, time() + (3600) * 4, "/");
+		}
 	}
 
 	public static function deleteCookie()
@@ -85,7 +91,6 @@ class func
 		setcookie('email', '', time()  - 1, "/");
 		setcookie('token', '', time()  - 1, "/");
 		setcookie('serial', '', time()  - 1, "/");
-        setcookie('shopping_cart', '', time()  - 1, "/");
 	}
 
 	public static function createSession($user_email, $user_id, $token, $serial)
@@ -93,6 +98,7 @@ class func
 		if (!isset($_SESSION))
 		{
 			session_start();
+			debug_to_console("Auth from create session");
 		}
 		$_SESSION['userid'] = $user_id;
 		$_SESSION['token'] = $token;
@@ -105,6 +111,19 @@ class func
 		$string = "1qay2wsx3edc4rfv5tgb6zhn7ujm8ik9olpAQWSXEDCVFRTGBNHYZUJMKILOP";
 
 		return substr(str_shuffle($string), 0, 30);
+	}
+
+	public static function generatePass($length = 14){
+
+		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $count = mb_strlen($chars);
+
+    for ($i = 0, $result = ''; $i < $length; $i++) {
+        $index = rand(0, $count - 1);
+        $result .= mb_substr($chars, $index, 1);
+    }
+
+    return $result;
 	}
 }
 

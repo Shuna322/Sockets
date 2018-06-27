@@ -1,4 +1,4 @@
-<?php include_once("config.php");include_once("functions.php");include_once("head.php");?>
+<?php include_once("header.php"); include_once("config.php");?>
 
 <?php
   require_once("connection.php");
@@ -56,7 +56,7 @@
                     <?php
                   if ($response){
                       
-                      if (mysqli_num_rows($response) > 12) {
+                      if (mysqli_num_rows($response) > 18) {
                           echo '<ol class="carousel-indicators">
                               <li data-target="#carousel_action" data-slide-to="0" class="active"></li>';
                             for ($i=1; $i < mysqli_num_rows($response); $i+=12){
@@ -86,13 +86,13 @@
                                     </div>';
                                     $items++; $rowcount++; $active = false; $counter++; $secondcheckitem = 0;  $secondcheckrow = 0;
                                         
-                                if ($rowcount > 6) {
+                                if ($rowcount > 4) {
                                     echo '</div>';                                    
                                     $secondcheckrow = 1;
                                 }
                             
                       
-                            if ($items > 12) {
+                            if ($items > 18) {
                                 echo '</div>';
 
                                 $secondcheckitem = 1;
@@ -100,12 +100,12 @@
                           
                         
                           
-                          if ($items > 12) {
+                          if ($items > 18) {
                               $items = 1;
                                
                           }
-                          if ($row > 6) {
-                              $row = 1;
+                          if ($rowcount > 6) {
+                              $rowcount = 1;
                              
                           }
                            
@@ -159,7 +159,7 @@
                     <?php
                   if ($response1){
                       
-                      if (mysqli_num_rows($response1) > 12) {
+                      if (mysqli_num_rows($response1) > 18) {
                           echo '<ol class="carousel-indicators">
                               <li data-target="#carousel_racing" data-slide-to="0" class="active"></li>';
                             for ($i=1; $i < mysqli_num_rows($response1); $i+=12){
@@ -191,24 +191,24 @@
                                     </div>';
                                     $items2++; $rowcount2++; $active2 = false; $counter2++;$secondcheckitem2 = 0; $secondcheckrow2 = 0;
                                         
-                                if ($rowcount2 > 6) {
+                                if ($rowcount2 > 6 ){
                                     echo '</div>';
                                        $secondcheckrow2 = 1;
                                 }
                             
                       
-                            if ($items2 > 12) {
+                            if ($items2 > 18) {
                                 echo '</div>';
                                  $secondcheckitem2 = 1;
                             }
                           
                           
                           
-                          if ($items2 > 12) {
+                          if ($items2 > 18) {
                               $items2 = 1;
                           }
-                          if ($row2 > 6) {
-                              $row2 = 1;
+                          if ($rowcount2 > 6) {
+                              $rowcount2 = 1;
                           }
                             
                       }
@@ -262,7 +262,7 @@
                     <?php
                   if ($response2){
                       
-                      if (mysqli_num_rows($response2) > 12) {
+                      if (mysqli_num_rows($response2) > 18) {
                           echo '<ol class="carousel-indicators">
                               <li data-target="#carousel_survival" data-slide-to="0" class="active"></li>';
                             for ($i=1; $i < mysqli_num_rows($response2); $i+=12){
@@ -293,12 +293,12 @@
                                     $items3++; $rowcount3++; $active3 = false; $counter3++; $secondcheckitem3 = 0;  $secondcheckrow3 = 0;
                                         
                                 if ($rowcount3 > 6) {                                    echo '</div>';
-                                   
+                                     echo '</div>';
                                     $secondcheckrow3 = 1;
                                 }
                             
                       
-                            if ($items3 > 12) {
+                            if ($items3 > 18) {
                                 echo '</div>';
                                
                                 $secondcheckitem3 = 1;
@@ -306,12 +306,12 @@
                           
                         
                           
-                          if ($items3 >12) {
+                          if ($items3 >18) {
                               $items3 = 1;
                                
                           }
-                          if ($row3 > 6) {
-                              $row3 = 1;
+                          if ($rowcount3 > 6) {
+                              $rowcount3 = 1;
                              
                           }
                            
@@ -332,8 +332,8 @@
                              
                           }
                        
-                echo' </div">';
-               ?>
+                echo' </div">';                    
+                    ?>
 
                 </div>
                 <a class="carousel-control-prev" href="#carousel_survival" role="button" data-slide="prev">
