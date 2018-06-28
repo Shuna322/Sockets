@@ -168,7 +168,7 @@ if(isset($_POST['action']))
          echo '<script type="text/javascript">',
               'displayNotification("success", "fa fa-check-circle", "Вдало !", "Ваш аккаунт видалено !");',
               'setTimeout(function() {',
-              '    window.location.href = "http://shuna.cf/logout.php/";',
+              '    window.location.href = "logout.php";',
               '  }, 2000);',
               '</script>';
       } else {

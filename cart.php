@@ -39,7 +39,7 @@
             echo '<tr>
   						<td colspan="3" align="right">У загальному:</td>
   						<td>'.number_format($total, 2).'</td>
-  						<td><a href="confirm-order.php"><p class="text-success text-center">Купити</p></a></td>
+  						<td><a href="#"><p class="text-success text-center">Купити</p></a></td>
   					</tr>
             </tbody>
             </table>';

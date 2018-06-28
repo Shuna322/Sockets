@@ -150,7 +150,7 @@
              ?>
         </div>
         <div class="row jumbotron d-flex justify-content-around mt-1">
-          <div class="col-12 text-center h2 text-info" id="motherboards">
+          <div class="col-12 text-center h2 text-info" id="CPU">
             Процесори
           </div>
 
@@ -189,7 +189,7 @@
              ?>
         </div>
         <div class="row jumbotron d-flex justify-content-around mt-1">
-          <div class="col-12 text-center h2 text-info" id="motherboards">
+          <div class="col-12 text-center h2 text-info" id="GPU">
             Відеокарти
           </div>
 
@@ -228,7 +228,7 @@
              ?>
         </div>
         <div class="row jumbotron d-flex justify-content-around mt-1">
-          <div class="col-12 text-center h2 text-info" id="motherboards">
+          <div class="col-12 text-center h2 text-info" id="RAM">
             Оперативна пам`ять
           </div>
 
