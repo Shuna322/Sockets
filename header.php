@@ -145,7 +145,7 @@ if(isset($_GET["action"]))
 
       <div class="collapse navbar-collapse navbar-nav justify-content-between align-items-center align-content-center" id="navbarSupportedContent">
         <div class="nav-item dropdown mr-3 mb-1 mt-1">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle text-center" data-toggle="dropdown">
               Каталог товарів
             </button>
           <div class="dropdown-menu">
